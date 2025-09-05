@@ -1,6 +1,6 @@
 # Customer Churn Risk Prediction – PowerCo Case Study
 
-This repository contains an end-to-end workflow for predicting customer churn in the energy sector. Using **electricity consumption and contract data from PowerCo**, we perform exploratory analysis, feature engineering, and machine learning modeling to uncover churn drivers and build predictive insights that support actionable retention strategies.
+This repository contains an end-to-end machine learning workflow for **predicting customer churn** in the energy sector. Using **PowerCo’s electricity consumption, contract, and pricing data**, the project explores churn patterns, engineers predictive features, and trains a machine learning model to identify at-risk customers.
 
 ---
 
@@ -8,9 +8,14 @@ This repository contains an end-to-end workflow for predicting customer churn in
 
 ```
 .
-├── PowerCo_EDA.ipynb         # Exploratory data analysis of customer contracts and churn
-├── feature_engineering.ipynb # Feature creation and preprocessing pipeline
-├── RandomForest.ipynb        # Model training & evaluation (Random Forest)
+├── PowerCo_EDA.ipynb          # Exploratory Data Analysis of client consumption & churn
+├── feature_engineering.ipynb  # Feature engineering & preprocessing pipeline
+├── RandomForest.ipynb         # Random Forest model training & evaluation
+├── client_data.csv            # Raw client contract & consumption data
+├── price_data.csv             # Pricing data (peak, off-peak, mid-peak tariffs)
+├── clean_data_after_eda.csv   # Processed dataset after EDA
+├── data_for_predictions.csv   # Final dataset used for churn predictions
+├── Data Description.pdf       # Field descriptions for client & price data
 └── README.md
 ```
 
@@ -19,27 +24,34 @@ This repository contains an end-to-end workflow for predicting customer churn in
 ## Project Workflow
 
 1. **Exploratory Data Analysis (EDA)**
-   - Analyzed churn distribution across:
-     - Tariff types  
-     - Contract durations  
-     - Customer segments  
-   - Identified consumption and behavioral patterns driving attrition.  
+   - Examined churn distribution across tariff types, contract durations, and customer segments.
+   - Visualized electricity & gas consumption patterns to uncover churn drivers.
 
 2. **Feature Engineering**
-   - Created temporal and categorical features to capture seasonal demand and contract behaviors.  
-   - Applied preprocessing: handling missing data, encoding categorical variables, scaling numerical values.  
+   - Derived temporal, contract-based, and margin-related features.
+   - Cleaned missing values and encoded categorical variables.
+   - Prepared datasets for model training.
 
 3. **Modeling with Random Forest**
-   - Built and optimized a Random Forest classifier for churn prediction.  
-   - Evaluated model with accuracy, precision/recall, and feature importance.  
-   - Results highlight key factors influencing customer retention.  
+   - Built and optimized a Random Forest classifier to predict churn.
+   - Evaluated using precision, recall, accuracy, and feature importance.
+   - Identified key features influencing attrition, supporting targeted retention strategies.
+
+---
+
+## Data Sources
+
+- **client_data.csv**: Contract info, consumption history, forecasts, margins, and churn label.  
+- **price_data.csv**: Energy and power prices across peak, off-peak, and mid-peak periods.  
+- **Data Description.pdf**: Documentation of all fields and business context.  
 
 ---
 
 ## Key Results
 
-- **Strong predictive performance** with Random Forest, enabling identification of at-risk customers.  
-- **Business insights** from feature importances that guide retention strategies.  
+- Strong predictive accuracy using Random Forest.  
+- Top churn drivers identified: contract duration, energy margins, tariff types, and consumption forecasts.  
+- Framework enables **actionable retention strategies** for high-risk customers.  
 
 ---
 
@@ -70,7 +82,7 @@ Run notebooks sequentially for full workflow:
 
 ## Future Work
 
-- Experiment with **XGBoost/LightGBM** for improved performance.  
-- Deploy model via **Flask/FastAPI** for real-time churn scoring.  
-- Extend feature set with external consumption or demographic data.  
+- Benchmark against **XGBoost/LightGBM** for potential performance gains.  
+- Deploy as an API (Flask/FastAPI) for real-time churn scoring.  
+- Integrate external market/demographic data for feature enrichment.  
 
